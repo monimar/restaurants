@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     view: { 
         flex:1,
-        alaignItems:"center",
+        alignItems:"center",
         justifyContent: "center"
     },
     text: {
