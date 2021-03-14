@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Button,Icon, Input } from 'react-native-elements'
 import { size } from 'lodash'
 import { useNavigation } from '@react-navigation/native'
 import { validateEmail } from '../../utils/helpers'
 import { registerUser } from '../../utils/actions'
+
 import Loading from '../Loading'
-
-
 
 export default function RegisterForm() {
     const [showPassword,setShowPassword] = useState(false)
@@ -95,22 +94,22 @@ export default function RegisterForm() {
                         iconStyle={styles.Icon}
                         onPress={() => setShowPassword(!showPassword)}
                     />}
-                />
+            />
             <Input
-            containerStyle = {styles.input}
-            placeholder="Confirma tu contraseña..."
-            password = {true}
-            secureTextEntry={!showPassword}
-            onChange={(e) => onChange(e, "confirm")}
-            errorMessage={errorConfirm}
-            defaultValue={formData.confirm}
-            rightIcon={
-                <Icon
-                    type="material-community"
-                    name={ showPassword ? "eye-off-outline" : "eye-outline"}
-                    iconStyle={styles.Icon}
-                    onPress={() => setShowPassword(!showPassword)}
-                />}
+                containerStyle = {styles.input}
+                placeholder="Confirma tu contraseña..."
+                password = {true}
+                secureTextEntry={!showPassword}
+                onChange={(e) => onChange(e, "confirm")}
+                errorMessage={errorConfirm}
+                defaultValue={formData.confirm}
+                rightIcon={
+                    <Icon
+                        type="material-community"
+                        name={ showPassword ? "eye-off-outline" : "eye-outline"}
+                        iconStyle={styles.Icon}
+                        onPress={() => setShowPassword(!showPassword)}
+                    />}
             />
             <Button
                 title="Registrar Nuevo Usuario"
