@@ -35,7 +35,7 @@ export default function RegisterForm() {
             setErrorEmail(result.error)
         }
 
-        navigation.navigation("account")
+        navigation.navigate("account")
     }
 
     const validateData = () => {
