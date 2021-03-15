@@ -4,11 +4,71 @@ import { map } from 'lodash';
 import { Icon, ListItem } from 'react-native-elements';
 
 import Modal from '../Modal';
+import ChangeDisplayNameForm from './ChangeDisplayNameForm';
 
-export default function AccountOptions({user, toasRef}) {
-    const menuOptions = generateOptions();
+export default function AccountOptions({user, toasRef, setReloadUser}) {
+    
     const [showModal, setShowModal] = useState(false)
     const [renderComponent, setRenderComponent] = useState(null)
+
+    const generateOptions= () => {
+        return [
+            {
+                title: "Cambiar Nombres y Apellidos",  
+                iconNameLeft: "account-circle", 
+                iconColorLeft: "#a7bfd3",
+                iconNameRight: "chevron-right", 
+                iconColorRight: "#a7bfd3",
+                onPress: () => selectedComponenet("displayName")
+            },
+            {
+                title: "Cambiar Email",  
+                iconNameLeft: "at", 
+                iconColorLeft: "#a7bfd3",
+                iconNameRight: "chevron-right",     
+                iconColorRight: "#a7bfd3",
+                onPress: () => selectedComponenet("email")
+        
+            },
+            {
+                title: "Cambiar Contraseña",  
+                iconNameLeft: "lock-reset", 
+                iconColorLeft: "#a7bfd3",
+                iconNameRight: "chevron-right", 
+                iconColorRight: "#a7bfd3",
+                onPress: () => selectedComponenet("password")
+        
+            }
+    ]
+    }
+
+    const selectedComponenet = (key) => {
+        switch(key) {
+            case "displayName":
+                setRenderComponent(
+                    <ChangeDisplayNameForm
+                    displayName={user.displayName}
+                    setShowModal={setShowModal}
+                    toasRef={toasRef}
+                    setReloadUser={setReloadUser}
+                />
+                )
+                break;
+            case "email":
+                setRenderComponent(
+                    <Text>email</Text>
+                )
+                break;
+            case "password":
+                setRenderComponent(
+                    <Text>password</Text>
+                )
+                break;
+        }
+        setShowModal(true)
+    }
+
+    const menuOptions = generateOptions();
 
     return (
         <View>
@@ -35,46 +95,19 @@ export default function AccountOptions({user, toasRef}) {
                     </ListItem>
                 ))
             }
-            <Modal isVisible={showModal} setVisible={setShowModal}/>
+            <Modal isVisible={showModal} setVisible={setShowModal}>
+                {
+                    renderComponent
+                }
+            </Modal>
             
         </View>
     )
 }
 
-const generateOptions= () => {
-    return [
-        {
-            title: "Cambiar Nombres y Apellidos",  
-            iconNameLeft: "account-circle", 
-            iconColorLeft: "#a7bfd3",
-            iconNameRight: "chevron-right", 
-            iconColorRight: "#a7bfd3",
-            onPress: () => selectedComponenet("displayName")
-        },
-        {
-            title: "Cambiar Email",  
-            iconNameLeft: "at", 
-            iconColorLeft: "#a7bfd3",
-            iconNameRight: "chevron-right",     
-            iconColorRight: "#a7bfd3",
-            onPress: () => selectedComponenet("email")
-    
-        },
-        {
-            title: "Cambiar Contraseña",  
-            iconNameLeft: "lock-reset", 
-            iconColorLeft: "#a7bfd3",
-            iconNameRight: "chevron-right", 
-            iconColorRight: "#a7bfd3",
-            onPress: () => selectedComponenet("password")
-    
-        }
-]
-}
 
-const selectedComponenet = (key) => {
-    
-}
+
+
 
 const styles = StyleSheet.create({
     menuItem: {
