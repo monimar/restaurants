@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState }from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { map } from 'lodash';
 import { Icon, ListItem } from 'react-native-elements';
 
+import Modal from '../Modal';
+
 export default function AccountOptions({user, toasRef}) {
     const menuOptions = generateOptions();
+    const [showModal, setShowModal] = useState(false)
+    const [renderComponent, setRenderComponent] = useState(null)
 
     return (
         <View>
@@ -13,6 +17,7 @@ export default function AccountOptions({user, toasRef}) {
                     <ListItem
                         key={index}
                         style={styles.menuItem}
+                        onPress={menu.onPress}
                     >
                         <Icon
                             type="material-community"
@@ -30,25 +35,29 @@ export default function AccountOptions({user, toasRef}) {
                     </ListItem>
                 ))
             }
+            <Modal isVisible={showModal} setVisible={setShowModal}/>
+            
         </View>
     )
 }
 
-function generateOptions() {
+const generateOptions= () => {
     return [
         {
             title: "Cambiar Nombres y Apellidos",  
             iconNameLeft: "account-circle", 
             iconColorLeft: "#a7bfd3",
             iconNameRight: "chevron-right", 
-            iconColorRight: "#a7bfd3"
+            iconColorRight: "#a7bfd3",
+            onPress: () => selectedComponenet("displayName")
         },
         {
             title: "Cambiar Email",  
             iconNameLeft: "at", 
             iconColorLeft: "#a7bfd3",
-            iconNameRight: "chevron-right", 
-            iconColorRight: "#a7bfd3"
+            iconNameRight: "chevron-right",     
+            iconColorRight: "#a7bfd3",
+            onPress: () => selectedComponenet("email")
     
         },
         {
@@ -56,10 +65,15 @@ function generateOptions() {
             iconNameLeft: "lock-reset", 
             iconColorLeft: "#a7bfd3",
             iconNameRight: "chevron-right", 
-            iconColorRight: "#a7bfd3"
+            iconColorRight: "#a7bfd3",
+            onPress: () => selectedComponenet("password")
     
         }
 ]
+}
+
+const selectedComponenet = (key) => {
+    
 }
 
 const styles = StyleSheet.create({
