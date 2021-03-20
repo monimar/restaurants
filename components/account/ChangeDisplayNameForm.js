@@ -24,6 +24,7 @@ export default function ChangeDisplayNameForm({ displayName, setShowModal, toast
             setError("Error al actualizar nombres y apellidos, intenta más tarde")
             return
         }
+        
         setReloadUser(true)
         toastRef.current.show("Se han actualizado nombres y apellidos.", 3000)
         setShowModal(false)
