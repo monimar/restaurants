@@ -39,7 +39,7 @@ export const loginWithEmailAndPassword = async(email,pasword) => {
         await firebase.auth().signInWithEmailAndPassword(email,pasword)
     } catch (error) {
         result.statusResponse = false
-        result.error = "Usuario o contraseña invalida"
+        result.error = "Usuario o contraseña no válidos."
     }
     return result
 }

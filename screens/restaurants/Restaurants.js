@@ -13,6 +13,8 @@ export default function Restaurants({ navigation}) {
     useEffect(() => {
         firebase.auth().onAuthStateChanged((userInfo) => {
             userInfo ? setUser(true):setUser(false)
+
+            
         })
         
     }, [])
