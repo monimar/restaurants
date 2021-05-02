@@ -8,7 +8,7 @@ import ChangeDisplayNameForm from './ChangeDisplayNameForm';
 import ChangeEmailForm from './ChangeEmailForm';
 import ChangePasswordForm from './ChangePasswordForm';
 
-export default function AccountOptions({user, toasRef, setReloadUser}) {
+export default function AccountOptions({user, toastRef, setReloadUser}) {
     
     const [showModal, setShowModal] = useState(false)
     const [renderComponent, setRenderComponent] = useState(null)
@@ -51,7 +51,7 @@ export default function AccountOptions({user, toasRef, setReloadUser}) {
                     <ChangeDisplayNameForm
                     displayName={user.displayName}
                     setShowModal={setShowModal}
-                    toasRef={toasRef}
+                    toastRef={toastRef}
                     setReloadUser={setReloadUser}
                 />
                 )
@@ -61,7 +61,7 @@ export default function AccountOptions({user, toasRef, setReloadUser}) {
                     <ChangeEmailForm
                         email={user.email}
                         setShowModal={setShowModal}
-                        toasRef={toasRef}
+                        toastRef={toastRef}
                         setReloadUser={setReloadUser}
                     />
                 )
@@ -70,7 +70,7 @@ export default function AccountOptions({user, toasRef, setReloadUser}) {
                 setRenderComponent(
                     <ChangePasswordForm
                             setShowModal={setShowModal}
-                            toasRef={toasRef}
+                            toastRef={toastRef}
                             setReloadUser={setReloadUser}
                     />
                 )
