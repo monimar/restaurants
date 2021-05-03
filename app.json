@@ -20,9 +20,15 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.monimar.restaurants",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBeUz8qO2vb3RY9SolsJEzJRH1ODcvHpHc"
+        }
       },
       "permissions": [
         "CAMERA_ROLL",

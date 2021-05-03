@@ -1,0 +1,10 @@
+AIzaSyBeUz8qO2vb3RY9SolsJEzJRH1ODcvHpHc
+
+https://expo.io/accounts/monimar/builds/ea2b5712-acd7-49fc-ade5-ebafde175bf2
+
+C:\Projects\restaurants> expo fetch:android:hashes
+Accessing credentials for monimar in project restaurants
+Google Certificate Fingerprint:     14:E5:5B:71:F0:03:47:58:26:19:89:40:20:CA:33:1C:1C:2F:CC:60
+Google Certificate Hash (SHA-1):    14E55B71F00347582619894020CA331C1C2FCC60
+Google Certificate Hash (SHA-256):  933B5BB2909A9D2671AEE7DD2A5B8561D6795151FE4F583E0E911ADDD3E84174
+Facebook Key Hash:                  FOVbcfADR1gmGYlAIMozHBwvzGA=
