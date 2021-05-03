@@ -3,11 +3,15 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import {useFocusEffect} from '@react-navigation/native'
 import firebase from 'firebase/app'
+import { size } from 'lodash'
 
-import { getRestaurants, isUserLogged } from '../../utils/actions'
 import Loading from '../../components/Loading'
+import ListRestaurants from '../../components/restaurants/ListRestaurants'
+import { getRestaurants, isUserLogged } from '../../utils/actions'
 
-export default function Restaurants({ navigation}) {
+
+
+export default function Restaurants({ navigation }) {
 
     const [user, setUser] = useState(null)
     const [startRestaurant, setStartRestaurant] = useState(null)
@@ -43,7 +47,18 @@ export default function Restaurants({ navigation}) {
     }
     return (
         <View style={styles.viewBody}>
-            <Text>Restaurants...</Text>
+            {
+                size(restaurants) > 0 ? (
+                    <ListRestaurants
+                        restaurants={restaurants}
+                        navigation={navigation}
+                    />
+                ) : (
+                    <View>
+                        <Text style={styles.notFoundText}> No hay restaurantes registrados. </Text>
+                    </View>
+                )
+            }
             {
                 user && (
                     <Icon
@@ -73,5 +88,14 @@ const styles = StyleSheet.create({
         shadowOffset:{width: 2, height: 2},
         shadowOpacity: 0.5
         
+    },
+    notFoundView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    notFoundText: {
+        fontSize: 18,
+        fontWeight: "bold"
     }
 })
