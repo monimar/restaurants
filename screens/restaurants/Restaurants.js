@@ -23,8 +23,6 @@ export default function Restaurants({ navigation }) {
     useEffect(() => {
         firebase.auth().onAuthStateChanged((userInfo) => {
             userInfo ? setUser(true):setUser(false)
-
-            
         })
         
     }, [])
@@ -41,6 +39,19 @@ export default function Restaurants({ navigation }) {
         }, [])
     )
 
+    const handleLoadMore = async() => {
+        if (!startRestaurant) {
+            return
+        }
+        setLoading(true)
+        const response = await getMoreRestaurants(limitRestaurants, startRestaurant)
+        if (response.statusResponse) {
+            setStartRestaurant(response.startRestaurant)
+            setRestaurants([...restaurants, ...response.restaurants])
+        }
+        setLoading(false)
+    }
+
     if (user === null){
         return <Loading isVisible={true} text="Cargando..."/>
 
@@ -52,6 +63,7 @@ export default function Restaurants({ navigation }) {
                     <ListRestaurants
                         restaurants={restaurants}
                         navigation={navigation}
+                        handleLoadMore={handleLoadMore}
                     />
                 ) : (
                     <View>

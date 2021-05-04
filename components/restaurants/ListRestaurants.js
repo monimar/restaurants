@@ -10,8 +10,8 @@ export default function ListRestaurants({ restaurants, navigation, handleLoadMor
             <FlatList
                 data={restaurants}
                 keyExtractor={(item, index) => index.toString()}
-                // onEndReachedThreshold={0.5}
-                // onEndReached={handleLoadMore}
+                onEndReachedThreshold={0.5}
+                onEndReached={handleLoadMore}
                 renderItem={(restaurant) => (
                     <Restaurant restaurant={restaurant} navigation={navigation}/>
                 )}
@@ -42,8 +42,7 @@ function Restaurant({ restaurant, navigation, handleLoadMore }) {
                 <View>
                     <Text style={styles.restaurantTitle}>{name}</Text>
                     <Text style={styles.restaurantInformation}>{address}</Text>
-                    <Text style={styles.restaurantInformation}>+{callingCode}-{phone}</Text>
-                        {/* {formatPhone(callingCode, phone)} */}
+                    <Text style={styles.restaurantInformation}>{formatPhone(callingCode, phone)}</Text>
                     <Text style={styles.restaurantDescription}>
                         {
                             size(description) > 0
