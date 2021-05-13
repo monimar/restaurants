@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Alert, StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
-import Loading from '../../components/Loading'
 
-import CaroulsellImage from '../../components/restaurants/CaroulsellImage'
+import Loading from '../../components/Loading'
+import CaroulselImage from '../../components/CaroulselImage'
 import { getDocumentById } from '../../utils/actions'
 
 const widthScreen = Dimensions.get("window").width
@@ -31,7 +31,7 @@ if (!restaurant){
 
 return (
         <ScrollView style={styles.viewBody}>
-            <CaroulsellImage
+            <CaroulselImage
             images={restaurant.images}
             height={250}
             width={widthScreen}

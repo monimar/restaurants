@@ -7,7 +7,7 @@ import { size } from 'lodash'
 
 import Loading from '../../components/Loading'
 import ListRestaurants from '../../components/restaurants/ListRestaurants'
-import { getRestaurants, isUserLogged } from '../../utils/actions'
+import { getMoreRestaurants, getRestaurants, isUserLogged } from '../../utils/actions'
 
 
 
@@ -28,14 +28,17 @@ export default function Restaurants({ navigation }) {
     }, [])
 
     useFocusEffect(
-        useCallback(async() => {
-            setLoading(true)
-            const response = await getRestaurants(limitRestaurants)
-            if (response.statusResponse) {
-                setStartRestaurant(response.startRestaurant)
-                setRestaurants(response.restaurants)
+        useCallback(() => {
+            async function getData() {
+                setLoading(true)
+                const response = await getRestaurants(limitRestaurants)
+                if (response.statusResponse) {
+                    setStartRestaurant(response.startRestaurant)
+                    setRestaurants(response.restaurants)
+                }
+                setLoading(false)
             }
-            setLoading(false)
+            getData()
         }, [])
     )
 

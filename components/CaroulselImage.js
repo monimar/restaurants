@@ -1,9 +1,9 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 import { Image } from 'react-native-elements'
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import Carousel from 'react-native-snap-carousel'
 
-export default function CaroulsellImage({ images, height, width }) {
+export default function CaroulselImage({ images, height, width }) {
 
     const renderItem = ({ item }) => { 
         
@@ -15,15 +15,16 @@ export default function CaroulsellImage({ images, height, width }) {
             />
         )
     }
+    
     return (
-        <Caroulsell
+        <Carousel
             layout={"default"}
             data={images}
             sliderWidth={width}
+            itemWidth={width}
             itemHeigt={height}
             renderItem={renderItem}
         />
-        
     )
 }
 

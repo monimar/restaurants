@@ -2,6 +2,7 @@ import { size } from 'lodash'
 import React from 'react'
 import { ActivityIndicator, FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Image } from 'react-native-elements'
+
 import { formatPhone } from '../../utils/helpers'
 
 export default function ListRestaurants({ restaurants, navigation, handleLoadMore }) {
