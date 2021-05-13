@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { Alert, StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
+import { Rating } from 'react-native-elements'
 
 import Loading from '../../components/Loading'
 import CaroulselImage from '../../components/CaroulselImage'
 import { getDocumentById } from '../../utils/actions'
+import { View } from 'react-native'
+
 
 const widthScreen = Dimensions.get("window").width
 
@@ -39,14 +42,52 @@ return (
             activeSlide={activeSlide}
             setActiveSlide={setActiveSlide}
             />
-            <Text>{restaurant.description}</Text>
+            <TitleRestaurant
+                name={restaurant.name}
+                description={restaurant.description}
+                rating={restaurant.rating}
+            />
         </ScrollView>
+    )
+}
+
+function TitleRestaurant ({ name, description, rating }){
+    return(
+        <View style={styles.viewRestaurantTitle}>
+            <View style={styles.viewRestaurantContainer}>
+                <Text style={styles.nameRestaurant}>{name}</Text>
+                <Rating
+                    style={styles.rating}
+                    imageSize={20}
+                    readonly
+                    startingValue={parseFloat(rating)}
+                />
+            </View>
+            <Text style={styles.descriptionRestaurant}>{description}</Text>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     viewBody:{
         flex: 1
-    }
-
+    },
+    viewRestaurantTitle: {
+        padding: 15,
+    },
+    viewRestaurantContainer:{
+        flexDirection: "row"
+    },
+    descriptionRestaurant: {
+        marginTop: 8,
+        color: "gray",
+        textAlign: "justify"
+    },
+    rating: {
+        position: "absolute",
+        right: 0
+    },
+    nameRestaurant: {
+        fontWeight: "bold"
+    },
 })
