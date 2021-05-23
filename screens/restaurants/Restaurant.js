@@ -9,6 +9,7 @@ import { getDocumentById } from '../../utils/actions'
 import CaroulselImage from '../../components/CaroulselImage'
 import MapRestaurant from '../../components/restaurants/MapRestaurant'
 import { formatPhone } from '../../utils/helpers'
+import ListReviews from '../../components/restaurants/ListReviews'
 
 const widthScreen = Dimensions.get("window").width
 
@@ -56,6 +57,11 @@ return (
                 email={restaurant.email}
                 phone={formatPhone(restaurant.callingCode, restaurant.phone)}
             />
+            <ListReviews
+                navigation={navigation}
+                idRestaurant={restaurant.id}
+            />
+        
         </ScrollView>
     )
 }
